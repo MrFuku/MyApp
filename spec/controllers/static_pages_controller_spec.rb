@@ -32,4 +32,10 @@ RSpec.describe StaticPagesController, type: :controller do
     let(:page_title) { "About | " }
     it_behaves_like "レスポンス、タイトル確認"
   end
+
+  describe "GET #contact" do
+    before { get :contact }
+    let(:page_title) { "Contact | " }
+    it_behaves_like "レスポンス、タイトル確認"
+  end
 end
