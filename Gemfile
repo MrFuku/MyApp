@@ -5,6 +5,8 @@ ruby '2.5.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
+
+gem 'bootstrap-sass', '3.3.7'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
@@ -41,8 +43,10 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
   gem "rspec-rails", "~> 3.7"
   gem "factory_bot_rails", "~> 4.11"
+  gem 'rails-controller-testing'
 end
 
 group :development do
