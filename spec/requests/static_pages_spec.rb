@@ -36,4 +36,10 @@ RSpec.describe "StaticPages", type: :request do
     let(:page_title) { "Contact | " }
     it_behaves_like "レスポンス、タイトル確認"
   end
+
+  describe "GET #contact" do
+    before { get contact_path }
+    let(:page_title) { "Contact | " }
+    it_behaves_like "レスポンス、タイトル確認"
+  end
 end

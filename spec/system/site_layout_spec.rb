@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe "SiteLayoutTest", type: :system do
   link_name = headline = ""
+
   shared_examples "リンクの確認" do
     it "#{link_name}へのリンクが存在" do
       expect(page).to have_link link_name
