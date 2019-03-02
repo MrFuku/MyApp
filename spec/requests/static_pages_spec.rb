@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "StaticPages", type: :request do
   let(:base_title) { "Ruby on Rails Tutorial Sample App" }
-  let(:title) { "#{page_title}Ruby on Rails Tutorial Sample App" }
+  let(:title) { "#{page_title}#{base_title}" }
 
   shared_examples "レスポンス、タイトル確認" do
     it "レスポンスが正常である" do
