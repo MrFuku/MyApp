@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :request do
+RSpec.describe "Registrations", type: :request do
 
   describe "Get #new" do
     it "レスポンスが正常である" do
-      get signup_path
+      get login_path
       expect(response).to have_http_status(:success)
     end
   end
