@@ -17,7 +17,7 @@ describe "UsersSignup", type: :system do
     end
 
     it "サインアップページが再表示されること" do
-      expect(page).to have_selector 'h1', text: "Sign up"
+      expect(current_path).to eq signup_path
     end
 
     it "エラーメッセージが表示されること" do
@@ -29,8 +29,9 @@ describe "UsersSignup", type: :system do
     before do
       visit signup_path
       @before_user_count = User.all.count
+      @user = build(:user)
       fill_in "Name", with: "valid user"
-      fill_in "Email", with: "valid@example.com"
+      fill_in "Email", with: "valise@example.com"
       fill_in "Password", with: "password"
       fill_in "Confirmation", with: "password"
       click_button "Create my account"
