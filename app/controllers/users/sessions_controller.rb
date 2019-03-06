@@ -3,17 +3,17 @@
 class Users::SessionsController < Devise::SessionsController
   before_action :configure_sign_in_params, only: [:create]
 
-  # GET /resource/sign_in
+  # GET /login
   def new
     super
   end
 
-  # POST /resource/sign_in
+  # POST /login
   def create
     super
   end
 
-  # DELETE /resource/sign_out
+  # DELETE /logout
   def destroy
     super
   end
