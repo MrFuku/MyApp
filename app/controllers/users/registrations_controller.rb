@@ -4,12 +4,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-  # GET /resource/sign_up
+  # GET /sign_up
   def new
     super
   end
 
-  # POST /resource
+  # POST /sign_up
   def create
     super
   end
@@ -56,8 +56,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def after_inactive_sign_up_path_for(resource)
     # メール認証による処理実装後修正する
-    resource.confirmed_at = DateTime.now
-    resource.save
+    #resource.confirmed_at = DateTime.now
+    resource.confirm
     flash[:notice] = nil
     flash[:success] = "Welcome to the Sample App!"
     sign_in(resource_name, resource)

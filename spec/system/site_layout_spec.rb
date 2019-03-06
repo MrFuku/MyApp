@@ -7,7 +7,7 @@ describe "SiteLayoutTest", type: :system do
     it "#{link_name}へのリンクが存在" do
       expect(page).to have_link link_name
     end
-    it "#{link_name}ページへ遷移できる" do
+    it "#{headline}ページへ遷移できる" do
       click_on link_name
       expect(page).to have_selector 'h1', text: headline
     end
