@@ -2,7 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /sign_up
   def new
@@ -15,14 +15,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+  end
 
   # DELETE /resource
   # def destroy
@@ -46,9 +46,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+  end
 
   def after_sign_up_path_for(resource)
 
@@ -56,11 +56,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def after_inactive_sign_up_path_for(resource)
     # メール認証による処理実装後修正する
-    #resource.confirmed_at = DateTime.now
     resource.confirm
     flash[:notice] = nil
     flash[:success] = "Welcome to the Sample App!"
     sign_in(resource_name, resource)
+    resource
+  end
+
+  def after_update_path_for(resource)
+    flash[:success] = flash[:notice]
+    flash[:notice] = nil
     resource
   end
 end

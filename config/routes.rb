@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     get     '/signup',        to: 'users/registrations#new'
     post    '/signup',        to: 'users/registrations#create'
+    get     '/edit',          to: 'users/registrations#edit', as: :edit_user
+    put     '/edit',          to: 'users/registrations#update', as: :user_registration
     get     '/login',         to: 'users/sessions#new', as: :new_user_session
     post    '/login',         to: 'users/sessions#create'
     delete  '/logout',        to: 'users/sessions#destroy'
