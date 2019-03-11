@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  before_action :admin_user,     only: :destroy
 
   # GET /sign_up
   def new
@@ -14,20 +15,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  # GET /resource/edit
+  # GET /edit
   def edit
     super
   end
 
-  # PUT /resource
+  # PUT /
   def update
     super
   end
 
-  # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  # DELETE /users/:id
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to users_url
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -39,6 +42,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   protected
+
+  # 管理者かどうか確認
+  def admin_user
+    redirect_to(root_url) if !current_user.admin?
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "StaticPages", type: :request do
-  base_title =  "Ruby on Rails Tutorial Sample App"
 
   describe "GET #home" do
     it "レスポンスが正常なこと" do
@@ -18,7 +17,7 @@ RSpec.describe "StaticPages", type: :request do
       assert_select "title", full_title("Help")
     end
   end
-
+  
   describe "GET #about" do
     it "レスポンスが正常なこと" do
       get about_path

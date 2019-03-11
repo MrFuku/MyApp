@@ -4,7 +4,7 @@ describe "UsersEdit", type: :system do
   before do
     @user = create(:user)
   end
-  
+
   context "ログイン時" do
     before do
       sign_in @user
@@ -12,7 +12,7 @@ describe "UsersEdit", type: :system do
 
     context "パラメーターが妥当な場合" do
       it "ユーザー情報の編集に成功すること" do
-        visit edit_user_path
+        visit edit_user_path @user
         fill_in "Name", with: "after name"
         fill_in "Current password", with: @user.password
         click_button "Save changes"
