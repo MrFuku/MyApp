@@ -3,12 +3,15 @@ Rails.application.routes.draw do
   devise_scope :user do
     get     '/signup',        to: 'users/registrations#new'
     post    '/signup',        to: 'users/registrations#create'
+    get     '/edit',          to: 'users/registrations#edit', as: :edit_user
+    put     '/edit',          to: 'users/registrations#update', as: :user_registration
+    delete  '/users/:id',    to: 'users/registrations#destroy', as: :user_delete
     get     '/login',         to: 'users/sessions#new', as: :new_user_session
     post    '/login',         to: 'users/sessions#create'
     delete  '/logout',        to: 'users/sessions#destroy'
     get     '/confirmations', to: 'users/confirmations#show', as: :user_confirmation
   end
-  resources :users, only: [:show]
+  resources :users, only: [:show,:index]
   root              to: 'static_pages#home';
   get  '/help',     to: 'static_pages#help'
   get  '/about',    to: 'static_pages#about'

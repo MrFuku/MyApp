@@ -1,32 +1,41 @@
 require 'rails_helper'
 
-RSpec.describe "users", type: :request do
-  base_title =  "Ruby on Rails Tutorial Sample App"
+RSpec.describe "Users", type: :request do
 
   describe "Get #show" do
     context "ユーザーが存在する場合" do
-      let(:user) { create :user }
-      before { get user_path user }
-      expect_title = "jiro | #{base_title}"
-
-      it "レスポンスが正常である" do
+      it "ユーザーの詳細画面を表示すること" do
+        user = create(:user)
+        get user_path user
         expect(response).to have_http_status(:success)
-      end
-
-      it "タイトルの表示が「ユーザー名 | #{base_title}」であること" do
-        assert_select "title", expect_title
-      end
-
-      it "ユーザー名が表示されていること" do
+        assert_select "title", full_title(user.name)
         expect(response.body).to include user.name
       end
     end
 
     context "ユーザーが存在しない場合" do
       subject { -> { get user_path 1 } }
-
       it "「ActiveRecord::RecordNotFound」エラーになること" do
         is_expected.to raise_error ActiveRecord::RecordNotFound
+      end
+    end
+  end
+
+  describe "Get #index" do
+    context "未ログイン時" do
+      it "ログイン画面にリダイレクトされること" do
+        get users_path
+        assert_redirected_to login_url
+      end
+    end
+
+    context "ログイン時" do
+      it "ユーザー一覧画面が表示されること" do
+        user = create(:user)
+        sign_in user
+        get users_path
+        expect(response).to have_http_status(:success)
+        assert_select "title", full_title("All users")
       end
     end
   end
