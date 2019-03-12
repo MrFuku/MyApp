@@ -30,6 +30,8 @@ describe "UsersLogin", type: :system do
       aggregate_failures do
         expect(page).to have_no_link "Log in"
         click_on('Account')
+        expect(page).to have_selector "div.alert-success",
+          text: "Signed in successfully."
         expect(page).to have_link "Log out"
         expect(page).to have_link "Profile"
       end
@@ -40,6 +42,8 @@ describe "UsersLogin", type: :system do
       click_on "Log out"
       expect(current_path).to eq root_path
       aggregate_failures do
+        expect(page).to have_selector "div.alert-success",
+          text: "Signed out successfully."
         expect(page).to have_link "Log in"
         expect(page).to have_no_link "Log out"
         expect(page).to have_no_link "Profile"

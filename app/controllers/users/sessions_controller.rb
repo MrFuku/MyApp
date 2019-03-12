@@ -21,8 +21,15 @@ class Users::SessionsController < Devise::SessionsController
   protected
 
   def after_sign_in_path_for(resource)
-    flash[:notice] = nil
+    flash[:success] = flash[:notice]
+    flash.delete(:notice)
     resource
+  end
+
+  def after_sign_out_path_for(resource)
+    flash[:success] = flash[:notice]
+    flash.delete(:notice)
+    root_path
   end
 
   # If you have extra params to permit, append them to the sanitizer.

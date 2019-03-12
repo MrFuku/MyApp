@@ -62,19 +62,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   end
 
-  # def after_inactive_sign_up_path_for(resource)
-  #
-  #   # メール認証による処理実装後修正する
-  #   # resource.confirm
-  #   # flash[:notice] = nil
-  #   # flash[:success] = "Welcome to the Sample App!"
-  #   # sign_in(resource_name, resource)
-  #   # resource
-  # end
+  def after_inactive_sign_up_path_for(resource)
+    flash[:success] = flash[:notice]
+    flash.delete(:notice)
+    root_path
+  end
 
   def after_update_path_for(resource)
     flash[:success] = flash[:notice]
-    flash[:notice] = nil
+    flash.delete(:notice)
     resource
   end
 end

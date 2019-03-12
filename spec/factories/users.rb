@@ -9,5 +9,9 @@ FactoryBot.define do
     trait :admin do
       admin true
     end
+
+    trait :non_active do
+      confirmed_at nil
+    end
   end
 end
