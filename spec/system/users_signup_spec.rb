@@ -45,7 +45,6 @@ describe "UsersSignup", type: :system do
       expect(page).to have_selector "h1", text: user.name
       expect(page).to have_selector "div.alert-success",
         text: "Your email address has been successfully confirmed."
-
     end
   end
 end

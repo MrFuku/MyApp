@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     post    '/login',         to: 'users/sessions#create'
     delete  '/logout',        to: 'users/sessions#destroy'
     get     '/confirmations', to: 'users/confirmations#show', as: :user_confirmation
+    get     '/password/new',  to: 'users/passwords#new'
+    post    '/password',      to: 'users/passwords#create'
+    get     '/password/edit', to: 'users/passwords#edit', as: :edit_password
+    put     'password',       to: 'users/passwords#update'
   end
   resources :users, only: [:show,:index]
   root              to: 'static_pages#home';
