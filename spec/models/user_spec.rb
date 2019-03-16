@@ -142,4 +142,15 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  it "フィードにフォローしているユーザーの投稿が含まれていること" do
+    jack = create(:user)
+    bob = create(:user)
+    post = jack.microposts.create(content: "jack's post")
+    expect(jack.feed.include?(post)).to be_truthy
+    post = bob.microposts.create(content: "bob's post")
+    expect(jack.feed.include?(post)).to be_falsy
+    jack.follow(bob)
+    expect(jack.feed.include?(post)).to be_truthy
+  end
 end
