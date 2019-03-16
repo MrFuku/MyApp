@@ -1,4 +1,5 @@
 require_relative 'boot'
+require File.expand_path('../boot', __FILE__)
 
 require "rails"
 # Pick the frameworks you want:
@@ -29,5 +30,8 @@ module MyApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # 認証トークンをremoteフォームに埋め込む
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end

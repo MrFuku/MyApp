@@ -39,4 +39,28 @@ RSpec.describe "Users", type: :request do
       end
     end
   end
+
+  describe "Get #follwing" do
+    before do
+      @user = create(:user)
+    end
+    context "未ログイン時" do
+      it "ログイン画面にリダイレクトされること" do
+        get following_user_path(@user)
+        assert_redirected_to login_url
+      end
+    end
+  end
+
+  describe "Get #followers" do
+    before do
+      @user = create(:user)
+    end
+    context "未ログイン時" do
+      it "ログイン画面にリダイレクトされること" do
+        get followers_user_path(@user)
+        assert_redirected_to login_url
+      end
+    end
+  end
 end

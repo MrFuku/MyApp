@@ -15,10 +15,16 @@ Rails.application.routes.draw do
     get     '/password/edit', to: 'users/passwords#edit', as: :edit_password
     put     'password',       to: 'users/passwords#update'
   end
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :users, only: [:show,:index]
   root              to: 'static_pages#home';
   get  '/help',     to: 'static_pages#help'
   get  '/about',    to: 'static_pages#about'
   get  '/contact',  to: 'static_pages#contact'
   resources :microposts, only: [:create, :destroy]
+  resources :relationships,       only: [:create, :destroy]
 end
