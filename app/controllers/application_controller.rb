@@ -8,4 +8,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
+
+  private
+  def microposts_search_params
+    params.require(:q).permit(:content_cont)
+  end
 end
