@@ -1,0 +1,10 @@
+<%= form_for(@comment, data: { remote: true }) do |f| %>
+  <%= render 'users/shared/error_messages', object: f.object %>
+  <%= gravatar_for(current_user, size: 50) %>
+  <div class="field">
+    <%= f.hidden_field :micropost_id, :value => @micropost.id %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.text_area :content, placeholder: "コメントを書く..." %>
+  </div>
+  <%= f.submit "ツイート", class: "btn btn-primary" %>
+<% end %>
