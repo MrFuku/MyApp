@@ -311,13 +311,6 @@ input {
     margin-right: 10px;
     margin-top: 10px;
   }
-
-  .comment-form {
-    background-color: aliceblue;
-    .gravatar {
-      float: none;
-    }
-  }
 }
 
 aside {
@@ -331,5 +324,64 @@ span.picture {
   margin-top: 10px;
   input {
     border: 0;
+  }
+}
+
+/* comments */
+
+.comments {
+  list-style: none;
+  padding-inline-start: 15px;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+
+  .user {
+    font-size: 15px;
+  }
+
+  .content {
+
+  }
+  .content {
+    display: block;
+    font-size: 15px;
+    margin-left: 60px;
+
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+.comment_form {
+  background-color: aliceblue;
+  padding: 12px;
+  .gravatar {
+    float: none;
+    margin: 0;
+  }
+
+  .field {
+    width: 90%;
+    float: right;
+  }
+
+  input {
+    width: 80px;
+    float: right;
   }
 }

@@ -17,12 +17,11 @@
         <% end %>
       </span>
     </div>
-    <div class="comment-form">
-      <%= gravatar_for(current_user, size: 50) %>
-      <textarea placeholder="コメントを書く..."></textarea>
-      <div class="aaaaa">
-        <input type="submit" name="commit" value="ツイート" class="btn btn-primary" data-disable-with="Post">
-      </div>
-    </div>
+    <section class="comment_form">
+      <%= render '/comments/comment_form' %>
+    </section>
+    <ol class="comments">
+      <%= render @comments %>
+    </ol>
   </div>
 </div>
