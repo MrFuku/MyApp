@@ -291,6 +291,35 @@ input {
   }
 }
 
+.modal-content {
+  padding: 10px;
+  .gravatar {
+    margin-left: 10px;
+  }
+
+  .user {
+    font-size: 25px;
+  }
+
+  .content {
+    font-size: 25px;
+  }
+
+  #follow_form {
+    width: 80px;
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+
+  .comment-form {
+    background-color: aliceblue;
+    .gravatar {
+      float: none;
+    }
+  }
+}
+
 aside {
   textarea {
     height: 100px;
