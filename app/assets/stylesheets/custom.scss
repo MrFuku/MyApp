@@ -11,6 +11,25 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+@mixin twitter_btn {
+  background: #1da1f2;
+  color: white;
+  border-radius: 100px;
+  box-shadow: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: #1287e0;
+  }
+}
+
 /* universal */
 
 body {
@@ -75,6 +94,11 @@ p {
     color: white;
     text-decoration: none;
   }
+}
+
+.navbar-inverse .navbar-nav li a.btn {
+  @include twitter_btn;
+  margin-top: 10px;
 }
 
 /* footer */
@@ -311,6 +335,23 @@ input {
     margin-right: 10px;
     margin-top: 10px;
   }
+
+  .new_micropost {
+    textarea {
+      height: 100px;
+    }
+
+    .btn {
+      width: 15%;
+      float: right;
+      @include twitter_btn;
+    }
+
+    input#micropost_picture {
+      width: 50%;
+    }
+  }
+
 }
 
 aside {
@@ -342,9 +383,6 @@ span.picture {
     font-size: 15px;
   }
 
-  .content {
-
-  }
   .content {
     display: block;
     font-size: 15px;
@@ -383,5 +421,9 @@ span.picture {
   input {
     width: 80px;
     float: right;
+  }
+
+  .btn {
+    @include twitter_btn;
   }
 }
