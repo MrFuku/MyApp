@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get  '/help',     to: 'static_pages#help'
   get  '/about',    to: 'static_pages#about'
   get  '/contact',  to: 'static_pages#contact'
-  resources :microposts, only: [:create, :destroy, :show]
+  resources :microposts, only: [:new, :create, :destroy, :show]
   resources :comments, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]

@@ -2,6 +2,13 @@ class MicropostsController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user,   only: [:destroy]
 
+  def new
+    @micropost = current_user.microposts.build
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
@@ -13,7 +20,7 @@ class MicropostsController < ApplicationController
       render 'static_pages/home'
     end
   end
-  
+
   def destroy
     @micropost.destroy
     flash[:success] = "Micropost deleted"
