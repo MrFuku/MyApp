@@ -1,6 +1,6 @@
 <li id="comment-<%= comment.id %>">
   <%= link_to gravatar_for(comment.user, size: 40), comment.user %>
-  <span class="user"><%= link_to comment.user.name, comment.user %></span>
+  <span class="user"><%= link_to comment.user.name, comment.user, onclick: "removeModal()" %></span>
   <span class="content">
     <%= comment.content %>
   </span>

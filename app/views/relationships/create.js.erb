@@ -1,2 +1,4 @@
 $("#follow_form").html("<%= escape_javascript(render('users/unfollow')) %>");
-$("#followers").html('<%= @user.followers.count %>');
+$(".modal-content").find("#follow_form").html("<%= escape_javascript(render('users/unfollow')) %>");
+$("#followers").html('<%= @page_owner.followers.count %>');
+$("#following").html('<%= @page_owner.following.count %>');
