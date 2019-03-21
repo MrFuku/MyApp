@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
     if user_signed_in?
+      session[:page_owner_id] = current_user.id
       @micropost = current_user.microposts.build
       if params[:q] && params[:q].reject { |key, value| value.blank? }.present?
         @q = current_user.feed.ransack(microposts_search_params)

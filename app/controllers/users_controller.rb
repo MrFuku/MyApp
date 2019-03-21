@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :following, :followers]
 
   def index
+    session[:page_owner_id] = params[:id]
     if params[:q] && params[:q].reject { |key, value| value.blank? }.present?
       @q = User.ransack(search_params, activated_true: true)
       @title = "Search Result"
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    session[:page_owner_id] = params[:id]
     if params[:q] && params[:q].reject { |key, value| value.blank? }.present?
       @q = @user.microposts.ransack(microposts_search_params)
       @microposts = @q.result.paginate(page: params[:page])
