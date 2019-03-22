@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <div class="row">
-    <aside class="col-md-4">
+    <aside class="col-md-3">
       <section class="user_info">
         <%= render 'shared/user_info' %>
       </section>
@@ -19,6 +19,9 @@
     </div>
 
     <div class="modal fade" id="micropost-show-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"></div>
+    <div class="feed_post_form">
+      <%= render '/shared/micropost_form' %>
+    </div>
     <%= render 'shared/feed' %>
   </div>
   </div>

@@ -27,16 +27,16 @@ describe "Following", type: :system do
   it "ユーザーのフォローとアンフォローができること" do
     other = create(:user)
     visit user_path other
-    expect(page).to have_button 'Follow'
-    expect(page).to have_no_button 'Unfollow'
+    expect(page).to have_button 'フォローする'
+    expect(page).to have_no_button 'フォロー中'
     expect {
-      click_on "Follow"
+      click_on "フォローする"
       sleep 0.1
     }.to change(Relationship, :count).by(1)
-    expect(page).to have_button 'Unfollow'
-    expect(page).to have_no_button 'Follow'
+    expect(page).to have_button 'フォロー中'
+    expect(page).to have_no_button 'フォローする'
     expect {
-      click_on "Unfollow"
+      click_on "フォロー中"
       sleep 0.1
     }.to change(Relationship, :count).by(-1)
   end

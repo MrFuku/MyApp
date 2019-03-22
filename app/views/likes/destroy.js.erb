@@ -1,2 +1,2 @@
 $(".modal-content").find(".like").html("<%= escape_javascript(render "likes/like", micropost: @micropost) %>");
-$("#micropost-<%=@micropost.id%>").find(".like").html("likes <%= @micropost.likes.count %>");
+$("#micropost-<%=@micropost.id%>").find(".like").html("  <%= @micropost.likes.count %>");

@@ -6,7 +6,7 @@ describe "Microposts", type: :system do
     sign_in @user
     visit root_path
     fill_in "micropost_content", with: "first post"
-    click_on "Post"
+    click_on "ツイート"
   end
 
   it "作成した投稿がホーム画面で表示されること" do
