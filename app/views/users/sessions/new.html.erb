@@ -22,5 +22,14 @@
     <% end %>
 
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+    <button type="button" name="button" class="samplebtn" onclick="sampleLogin()">サンプルユーザーでログイン</button>
   </div>
 </div>
+
+<script type="text/javascript">
+  function sampleLogin() {
+    $('input#user_email').val('example-1@railstutorial.org');
+    $('input#user_password').val('password');
+    console.log("hello world!");
+  }
+</script>
