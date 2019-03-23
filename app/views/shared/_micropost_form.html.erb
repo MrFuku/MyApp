@@ -2,7 +2,10 @@
   <%= render 'users/shared/error_messages', object: f.object %>
   <div class="inputarea">
     <%= f.text_area :content, placeholder: "いまどうしてる？" %>
-    <%= f.submit "ツイート", class: "btn" %>
+    <div id="postButton">
+      <p id="charCount">入力文字数 0</p>
+      <%= f.submit "ツイート", class: "btn disabled", disabled: true %>
+    </div>
     <span class="picture">
       <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
     </span>
@@ -11,6 +14,28 @@
 <% end %>
 
 <script type="text/javascript">
+
+  $('.inputarea > textarea').bind('keydown keyup keypress change',function(){
+        var nowArea = $(this).parent(".inputarea");
+        var counter = $(nowArea).children("#postButton").children("#charCount");
+        var btn = $(nowArea).children("#postButton").children(".btn");
+        var thisValueLength = $(this).val().length;
+        var removeBlankLength = $(this).val().replace(/[\n\s　]/g, "").length;
+        var str = '入力文字数 ' + thisValueLength;
+        $(counter).text(str);
+        $(counter).css('color', '');
+        if(thisValueLength==0 || removeBlankLength==0 || thisValueLength > 140) {
+          $(btn).prop('disabled', true);
+          $(btn).addClass("disabled");
+          if(thisValueLength>140){
+            $(counter).css('color', 'red');
+          }
+        } else {
+          $(btn).prop('disabled', false);
+          $(btn).removeClass("disabled");
+        }
+    });
+
   $('#micropost_picture').bind('change', function() {
     var size_in_megabytes = this.files[0].size/1024/1024;
     if (size_in_megabytes > 5) {

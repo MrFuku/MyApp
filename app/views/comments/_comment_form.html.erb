@@ -5,6 +5,33 @@
     <%= f.hidden_field :micropost_id, :value => @micropost.id %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.text_area :content, placeholder: "返信をツイート" %>
+    <div id="postButton">
+      <p id="charCount">入力文字数 0</p>
+      <%= f.submit "返信", class: "btn disabled", disabled: true %>
+    </div>
+
   </div>
-  <%= f.submit "返信", class: "btn" %>
+
 <% end %>
+<script type="text/javascript">
+
+  $('textarea#comment_content').bind('keydown keyup keypress change',function(){
+    var nowArea = $(this).parent(".field");
+    var thisValueLength = $(this).val().length;
+    var removeBlankLength = $(this).val().replace(/[\n\s　]/g, "").length;
+    var str = '入力文字数 ' + thisValueLength;
+    $(".comment_form #charCount").text(str);
+    $(".comment_form #charCount").css('color', '');
+    console.log(thisValueLength);
+    if(thisValueLength==0 || removeBlankLength==0 || thisValueLength > 140) {
+      $(".comment_form .btn").prop('disabled', true);
+      $(".comment_form .btn").addClass("disabled");
+      if(thisValueLength>140){
+        $(".comment_form #charCount").css('color', 'red');
+      }
+    } else {
+      $(".comment_form .btn").prop('disabled', false);
+      $(".comment_form .btn").removeClass("disabled");
+    }
+  });
+</script>
