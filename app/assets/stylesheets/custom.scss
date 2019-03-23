@@ -61,6 +61,17 @@ textarea {
   @include twitter_btn;
 }
 
+#postButton {
+  display: -webkit-inline-box;
+  float: right;
+  .disabled {
+    cursor: no-drop;
+  }
+  & p{
+    margin-right: 10px;
+  }
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -381,6 +392,16 @@ input {
     float: right;
   }
 
+  .btn.disabled {
+    &:hover {
+      cursor: no-drop;
+    }
+  }
+
+  #charCount {
+    text-align: right;
+  }
+
   textarea {
     height: 100px;
     border-radius: 8px;
@@ -489,7 +510,6 @@ span.picture {
 
   input {
     width: 80px;
-    float: right;
   }
 
   .btn {
