@@ -1,24 +1,44 @@
-# README
+# MyApp
+[サイトURL](http://18.182.233.52/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## アプリ概要
+- Railsチュートリアルのサンプルを拡張したアプリです。
+- オリジナルの全ての機能に加え、AWS上に構築、RSpec導入、コメントやいいねの機能追加、検索機能追加といった変更を加えました。
 
-Things you may want to cover:
+## 主な機能
+- ユーザー機能
+  - ユーザー作成
+  - ユーザー編集
+  - ユーザー削除
+  - 管理者ユーザー
+- フォロー機能
+  - ユーザーのフォロー
+  - フォローしているユーザーの一覧機能
+  - フォローされているユーザーの一覧機能
+  - フォローの解除
+- 記事機能
+  - 記事作成
+  - 記事削除
+- コメント機能
+  - 記事に対しコメント（返信）投稿できる
+- いいね機能
+  - 記事に対しいいねを押せる
+- 検索機能
+  - キーワードによるユーザー検索
+  - キーワードによる記事検索
 
-* Ruby version
+## 使用した技術
+- ユーザー認証
+  - device（一部カスタマイズ）
+- デプロイ
+  - AWS
+- DB
+  - MySQL
+- RSpec
+  - 単体テスト
+  - 統合テスト
+  - E2Eテスト
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## バージョン
+- Ruby 2.5.0
+- Rails 5.2.2
